@@ -35,7 +35,6 @@ export class Controller {
   async verify(req, res, next) {
     try {
       const { roll, sem, targetHash } = req.query;
-      console.log({roll, sem, targetHash})
       const verified = await UsersService.verify(roll, sem, targetHash);
       res.status(200).json({ verified, message: "Successful" });
     } catch (err) {

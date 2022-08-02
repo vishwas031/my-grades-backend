@@ -18,7 +18,6 @@ class BlockchainService {
         .encodeABI();
       const signedTransaction = await this.signTransaction(encodedData);
       const status = await this.sendTransaction(signedTransaction);
-      console.log(status);
       return status;
     } catch (err) {
       console.log("[ERR]", err);
@@ -46,7 +45,6 @@ class BlockchainService {
       },
       ACCOUNT_PRIVATE_KEY
     );
-    console.log(signedTransaction);
     return signedTransaction;
   }
 

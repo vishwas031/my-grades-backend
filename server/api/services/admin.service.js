@@ -60,7 +60,6 @@ class AdminService {
 
       for (let grade of grades) {
         const hash = keccak256(JSON.stringify(grade)).toString("hex");
-        console.log(hash, grade.roll, sem - 1);
         await BlockchainService.issue(hash, grade.roll, sem - 1);
       }
 

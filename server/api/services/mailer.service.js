@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 const { google } = require('googleapis');
-import l from "../../common/logger";
-import { emailId} from "../../common/config";
+import logger from "../../common/logger";
 
 // These id's and secrets should come from .env file.
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -56,7 +55,7 @@ class MailerService {
       this.triggerMail(mailOptions);
       
     } catch (err) {
-      l.error("[SEND OTP]", err, eventName);
+      logger.error("[SEND OTP]", err, eventName);
       throw err;
     }
   }

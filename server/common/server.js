@@ -9,7 +9,7 @@ import cors from "cors";
 import oas from "./oas";
 import mongo from "./mongo";
 
-import l from "./logger";
+import logger from "./logger";
 
 const app = new Express();
 const exit = process.exit;
@@ -38,7 +38,7 @@ export default class ExpressServer {
 
   listen(port = process.env.PORT) {
     const welcome = (p) => () =>
-      l.info(
+      logger.info(
         `up and running in ${process.env.NODE_ENV ||
           "development"} @: ${os.hostname()} on port: ${p}}`
       );
@@ -46,12 +46,12 @@ export default class ExpressServer {
     oas(app, this.routes)
       .then(() => {
         mongo().then(() => {
-          l.info(`Database loaded!`);
+          logger.info(`Database loaded!`);
           http.createServer(app).listen(port, welcome(port));
         });
       })
       .catch((e) => {
-        l.error(e);
+        logger.error(e);
         exit(1);
       });
 

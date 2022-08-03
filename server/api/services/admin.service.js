@@ -5,7 +5,7 @@ import keccak256 from "keccak256";
 import userModel from "../../models/user";
 import BlockchainService from "./blockchain.service";
 
-import l from "../../common/logger";
+import logger from "../../common/logger";
 import { adminEmail, adminPassword, adminApiKey } from "../../common/config";
 
 class AdminService {
@@ -20,7 +20,7 @@ class AdminService {
         throw { status: 401, message: "Invalid credentials!" };
       return adminApiKey;
     } catch (err) {
-      l.error("[ADMIN LOGIN]", err);
+      logger.error("[ADMIN LOGIN]", err);
       throw err;
     }
   }

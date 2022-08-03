@@ -4,7 +4,6 @@ import userModel from "../../models/user";
 
 import BlockchainService from "./blockchain.service";
 
-import l from "../../common/logger";
 import generateOtp from "../../utils/otpGenerator";
 
 class UsersService {

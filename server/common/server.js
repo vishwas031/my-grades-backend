@@ -37,7 +37,7 @@ export default class ExpressServer {
   }
 
   listen(port = process.env.PORT) {
-    const welcome = (p) => () =>
+    const start = (p) => () =>
       logger.info(
         `up and running in ${process.env.NODE_ENV ||
           "development"} @: ${os.hostname()} on port: ${p}}`
@@ -47,7 +47,7 @@ export default class ExpressServer {
       .then(() => {
         mongo().then(() => {
           logger.info(`Database loaded!`);
-          http.createServer(app).listen(port, welcome(port));
+          http.createServer(app).listen(port, start(port));
         });
       })
       .catch((e) => {
